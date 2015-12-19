@@ -34,6 +34,13 @@ export default Ember.Component.extend({
     }
   }),
 
+  editor: computed('$trix', {
+    get() {
+      let $trix = this.get('$trix');
+      return isPresent($trix) ? $trix.editor : null;
+    }
+  }),
+
   didInsertElement() {
     this._super(...arguments);
     TRIX_EVENTS.forEach(eventName => {
