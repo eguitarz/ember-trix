@@ -1,0 +1,24 @@
+{{ember-trix
+  trix-attachment-add=(action "handleTrixEvent")
+  trix-attachment-remove=(action "handleTrixEvent")
+  trix-blur=(action "handleTrixEvent")
+  trix-change=(action "handleTrixEvent")
+  trix-file-accept=(action "handleTrixEvent")
+  trix-focus=(action "handleTrixEvent")
+  trix-initialize=(action "handleTrixEvent")
+  trix-selection-change=(action "handleTrixEvent")
+}}
+
+<div class="row">
+  <div class="col">
+    <ol>
+    {{#each model as |event|}}
+      <li>{{event.type}}</li>
+    {{/each}}
+    </ol>
+  </div>
+  <div class="col">
+    raw:
+    {{raw}}
+  </div>
+</div>
