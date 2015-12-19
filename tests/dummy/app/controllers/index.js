@@ -10,7 +10,9 @@ export default Ember.Controller.extend({
   actions: {
     handleTrixEvent(event) {
       get(this, 'model').pushObject(event);
-      set(this, 'raw', event.target.editor.getDocument().toString());
+      let document = event.target.editor.getDocument();
+      let raw = Trix.serializeToContentType(document, 'text/html')
+      set(this, 'raw', raw);
     },
   }
 });
