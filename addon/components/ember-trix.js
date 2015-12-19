@@ -1,6 +1,13 @@
 import Ember from 'ember';
 import layout from '../templates/components/ember-trix';
 
+const {
+  computed,
+  isNone,
+  isPresent,
+  set,
+} = Ember;
+
 const TRIX_EVENTS = [
   'trix-attachment-add',
   'trix-attachment-remove',
@@ -16,11 +23,22 @@ export default Ember.Component.extend({
   layout: layout,
   classNames: ['trix-editor-wrapper'],
 
+  $trix: computed('_$trix', {
+    get() {
+      let trix = null;
+      if ( isNone(this.get('_$trix')) ) {
+        trix = this.$('trix-editor');
+        isPresent(trix) && set(this, '_$trix', trix);
+      }
+      return trix;
+    }
+  }),
+
   didInsertElement() {
-    let $trix = this.$('trix-editor');
+    this._super(...arguments);
     TRIX_EVENTS.forEach(eventName => {
       if (this.attrs.hasOwnProperty(eventName)) {
-        $trix.on(eventName, event => {
+        this.get('$trix').on(eventName, event => {
           let { [`${eventName}`] : eventHandler } = this.attrs;
           eventHandler(event);
         });
@@ -28,5 +46,11 @@ export default Ember.Component.extend({
     });
   },
 
+  willDestroyElement() {
+    this._super(...arguments);
+    TRIX_EVENTS.forEach(eventName => {
+      this.get('$trix').off('trix-file-accept');
+    });
+  },
 
 });
