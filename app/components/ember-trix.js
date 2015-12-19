@@ -1,0 +1,1 @@
+export { default } from 'ember-trix/components/ember-trix';
