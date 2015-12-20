@@ -19,3 +19,19 @@ test('apply class names', function(assert) {
   assert.ok(this.$('trix-editor').hasClass('c1'), 'has class c1');
   assert.ok(this.$('trix-editor').hasClass('c2'), 'has class c2');
 });
+
+test('is focused', function(assert) {
+  this.render(hbs`{{ember-trix autofocus=true}}`);
+  assert.ok(this.$('trix-editor').attr('autofocus'), 'is focused');
+
+  this.render(hbs`{{ember-trix}}`);
+  assert.notOk(this.$('trix-editor').attr('autofocus'), 'is not focused');
+});
+
+test('placeholder is set up', function(assert) {
+  this.render(hbs`{{ember-trix}}`);
+  assert.notOk(this.$('trix-editor').attr('placeholder'), 'placeholder is not set');
+
+  this.render(hbs`{{ember-trix placeholder="hello world"}}`);
+  assert.equal(this.$('trix-editor').attr('placeholder'), 'hello world', 'placeholder is set up');
+});
