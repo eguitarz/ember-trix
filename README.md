@@ -52,6 +52,11 @@ The built-in events are:
 For more detail about trix, check out their [Github page](https://github.com/basecamp/trix).
 
 ## Installation
+```
+$> ember install ember-trix
+```
+
+## Developing
 
 * `git clone` this repository
 * `npm install`
