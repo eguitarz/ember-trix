@@ -3,8 +3,8 @@
   {{ember-trix
     autofocus=true
     class="my-trix-editor"
-    placeholder="Type Something"
-    trix-attachment-add=(action "handleTrixEvent")
+    placeholder="Type Something or Drag an Image here"
+    trix-attachment-add=(action "handleTrixAttachmentAddEvent")
     trix-attachment-remove=(action "handleTrixEvent")
     trix-blur=(action "handleTrixEvent")
     trix-change=(action "handleTrixEvent")
