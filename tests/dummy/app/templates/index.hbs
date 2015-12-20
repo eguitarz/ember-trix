@@ -1,13 +1,16 @@
 <div class="row">
   <div class="col">
   {{ember-trix
+    autofocus=true
+    class="my-trix-editor"
+    placeholder="Type Something"
     trix-attachment-add=(action "handleTrixEvent")
     trix-attachment-remove=(action "handleTrixEvent")
     trix-blur=(action "handleTrixEvent")
     trix-change=(action "handleTrixEvent")
     trix-file-accept=(action "handleTrixEvent")
     trix-focus=(action "handleTrixEvent")
-    trix-initialize=(action "handleTrixEvent")
+    trix-initialize=(action "handleTrixInitializeEvent")
     trix-selection-change=(action "handleTrixEvent")
   }}
   </div>
