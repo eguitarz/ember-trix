@@ -1,6 +1,6 @@
-# Ember-trix
+# ember-trix
 
-This addon wrapped trix editor from Basecamp. Trix is a WYSIWYG editor,
+This ember addon wrapped trix editor from Basecamp. Trix is a WYSIWYG editor,
 visit their [demo site](http://trix-editor.org/) to know more about it.
 
 ## Example
