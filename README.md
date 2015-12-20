@@ -11,7 +11,7 @@ visit their [demo site](http://trix-editor.org/) to know more about it.
 ...
 actions{
   handleTrixEvent(event) {
-    get(this, 'model').pushObject(event);
+    ...
     let document = event.target.editor.getDocument();
     let raw = Trix.serializeToContentType(document, 'text/html');
     set(this, 'raw', raw);
