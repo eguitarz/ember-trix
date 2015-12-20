@@ -3,6 +3,11 @@
 This ember addon wrapped trix editor from Basecamp. Trix is a WYSIWYG editor,
 visit their [demo site](http://trix-editor.org/) to know more about it.
 
+## Installation
+```
+$> ember install ember-trix
+```
+
 ## Example
  Dummy page in test can help you understand the coding example. Here is an snippet about how to use closure action to save content.
 
@@ -50,11 +55,6 @@ The built-in events are:
 * trix-selection-change
 
 For more detail about trix, check out their [Github page](https://github.com/basecamp/trix).
-
-## Installation
-```
-$> ember install ember-trix
-```
 
 ## Developing
 
