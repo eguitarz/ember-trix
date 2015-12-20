@@ -3,6 +3,7 @@ import Ember from 'ember';
 const {
   computed,
   get,
+  isPresent,
   set
 } = Ember;
 
@@ -21,6 +22,19 @@ export default Ember.Controller.extend({
 
       const html = '<div>Text preloaded from html string</div>';
       editor.loadHTML(html);
+    },
+
+    handleTrixAttachmentAddEvent(event) {
+      this.send('handleTrixEvent', event);
+
+      let { attachment } = event.attachment;
+      let { fileObjectURL } = attachment;
+      if (isPresent(fileObjectURL)) {
+        return attachment.setAttributes({
+          url: fileObjectURL,
+          href: fileObjectURL
+        });
+      }
     },
   }
 });
