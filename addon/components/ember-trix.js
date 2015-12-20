@@ -40,7 +40,7 @@ export default Ember.Component.extend({
       if (this.attrs.hasOwnProperty(eventName)) {
         this.get('$trix').on(eventName, event => {
           let { [`${eventName}`] : eventHandler } = this.attrs;
-          eventHandler(event);
+          eventHandler(event.originalEvent);
         });
       }
     });
