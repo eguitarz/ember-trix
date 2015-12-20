@@ -14,5 +14,13 @@ export default Ember.Controller.extend({
       let raw = Trix.serializeToContentType(document, 'text/html')
       set(this, 'raw', raw);
     },
+
+    handleTrixInitializeEvent(event) {
+      this.send('handleTrixEvent', event);
+      const editor = event.target.editor;
+
+      const html = '<div>Text preloaded from html string</div>';
+      editor.loadHTML(html);
+    },
   }
 });
