@@ -25,10 +25,13 @@ export default Ember.Component.extend({
 
   $trix: computed('_$trix', {
     get() {
-      let trix = null;
+      let trix;
       if ( isNone(this.get('_$trix')) ) {
         trix = this.$('trix-editor');
-        isPresent(trix) && set(this, '_$trix', trix);
+
+        if ( isPresent(trix) ) {
+          set(this, '_$trix', trix);
+        }
       }
       return trix;
     }
@@ -38,10 +41,12 @@ export default Ember.Component.extend({
     this._super(...arguments);
     TRIX_EVENTS.forEach(eventName => {
       if (this.attrs.hasOwnProperty(eventName)) {
+        /* jshint ignore:start */
         this.get('$trix').on(eventName, event => {
           let { [`${eventName}`] : eventHandler } = this.attrs;
           eventHandler(event.originalEvent);
         });
+        /* jshint ignore:end */
       }
     });
   },
@@ -49,7 +54,7 @@ export default Ember.Component.extend({
   willDestroyElement() {
     this._super(...arguments);
     TRIX_EVENTS.forEach(eventName => {
-      this.get('$trix').off('trix-file-accept');
+      this.get('$trix').off(eventName);
     });
   },
 
