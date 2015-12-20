@@ -6,20 +6,16 @@ moduleForComponent('ember-trix', 'Integration | Component | ember trix', {
 });
 
 test('it renders', function(assert) {
-  
+
   // Set any properties with this.set('myProperty', 'value');
   // Handle any actions with this.on('myAction', function(val) { ... });" + EOL + EOL +
 
   this.render(hbs`{{ember-trix}}`);
+  assert.equal(this.$('trix-editor').length, 1, 'trix-editor exists');
+});
 
-  assert.equal(this.$().text().trim(), '');
-
-  // Template block usage:" + EOL +
-  this.render(hbs`
-    {{#ember-trix}}
-      template block text
-    {{/ember-trix}}
-  `);
-
-  assert.equal(this.$().text().trim(), 'template block text');
+test('apply class names', function(assert) {
+  this.render(hbs`{{ember-trix class="c1 c2"}}`);
+  assert.ok(this.$('trix-editor').hasClass('c1'), 'has class c1');
+  assert.ok(this.$('trix-editor').hasClass('c2'), 'has class c2');
 });

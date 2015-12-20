@@ -1,7 +1,7 @@
+/*global Trix:false */
 import Ember from 'ember';
 
 const {
-  computed,
   get,
   isPresent,
   set
@@ -12,7 +12,7 @@ export default Ember.Controller.extend({
     handleTrixEvent(event) {
       get(this, 'model').pushObject(event);
       let document = event.target.editor.getDocument();
-      let raw = Trix.serializeToContentType(document, 'text/html')
+      let raw = Trix.serializeToContentType(document, 'text/html');
       set(this, 'raw', raw);
     },
 
