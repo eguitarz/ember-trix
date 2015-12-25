@@ -1,6 +1,8 @@
 import Ember from 'ember';
 import layout from '../templates/components/ember-trix';
 
+const { _, Trix } = window;
+
 const {
   computed,
   isNone,
@@ -49,6 +51,11 @@ export default Ember.Component.extend({
         /* jshint ignore:end */
       }
     });
+
+    // merge config
+    if (isPresent(this.attrs.config)) {
+      Trix.config = _.merge(Trix.config, this.get('config'));
+    }
   },
 
   willDestroyElement() {
