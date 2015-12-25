@@ -1,6 +1,8 @@
 import Ember from 'ember';
 import layout from '../templates/components/ember-trix';
 
+const { _, Trix } = window;
+
 const {
   computed,
   isNone,
@@ -22,6 +24,14 @@ const TRIX_EVENTS = [
 export default Ember.Component.extend({
   layout: layout,
   classNames: ['trix-editor-wrapper'],
+
+  init() {
+    this._super(...arguments);
+    // merge config
+    if (isPresent(this.attrs.config)) {
+      Trix.config = _.merge(Trix.config, this.get('config'));
+    }
+  },
 
   $trix: computed('_$trix', {
     get() {
