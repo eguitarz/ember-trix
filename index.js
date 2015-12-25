@@ -18,5 +18,10 @@ module.exports = {
       path.join(app.bowerDirectory, 'trix/dist/trix.css'),
       { type: 'vendor' }
     );
+
+    app.import(
+      path.join(app.bowerDirectory, 'lodash/lodash.js'),
+      { type: 'vendor' }
+    );
   }
 };
