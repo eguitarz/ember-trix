@@ -25,6 +25,14 @@ export default Ember.Component.extend({
   layout: layout,
   classNames: ['trix-editor-wrapper'],
 
+  init() {
+    this._super(...arguments);
+    // merge config
+    if (isPresent(this.attrs.config)) {
+      Trix.config = _.merge(Trix.config, this.get('config'));
+    }
+  },
+
   $trix: computed('_$trix', {
     get() {
       let trix;
@@ -51,11 +59,6 @@ export default Ember.Component.extend({
         /* jshint ignore:end */
       }
     });
-
-    // merge config
-    if (isPresent(this.attrs.config)) {
-      Trix.config = _.merge(Trix.config, this.get('config'));
-    }
   },
 
   willDestroyElement() {
