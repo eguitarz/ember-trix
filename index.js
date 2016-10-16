@@ -19,9 +19,9 @@ module.exports = {
       { type: 'vendor' }
     );
 
-    app.import(
-      path.join(app.bowerDirectory, 'lodash/lodash.js'),
-      { type: 'vendor' }
-    );
+    // app.import(
+    //   path.join(app.bowerDirectory, 'lodash/lodash.js'),
+    //   { type: 'vendor' }
+    // );
   }
 };

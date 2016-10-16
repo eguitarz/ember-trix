@@ -1,7 +1,8 @@
 import Ember from 'ember';
 import layout from '../templates/components/ember-trix';
+import _ from 'lodash/lodash';
 
-const { _, Trix } = window;
+const { Trix } = window;
 
 const {
   computed,
@@ -50,13 +51,11 @@ export default Ember.Component.extend({
   didInsertElement() {
     this._super(...arguments);
     TRIX_EVENTS.forEach(eventName => {
-      if (this.attrs.hasOwnProperty(eventName)) {
-        /* jshint ignore:start */
+      let eventHandler = this.get(eventName);
+      if (eventHandler) {
         this.get('$trix').on(eventName, event => {
-          let { [`${eventName}`] : eventHandler } = this.attrs;
           eventHandler(event.originalEvent);
         });
-        /* jshint ignore:end */
       }
     });
   },
