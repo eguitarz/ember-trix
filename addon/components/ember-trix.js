@@ -54,7 +54,7 @@ export default Ember.Component.extend({
       let eventHandler = this.get(eventName);
       if (eventHandler) {
         this.get('$trix').on(eventName, event => {
-          eventHandler(event.originalEvent);
+          return eventHandler(event.originalEvent);
         });
       }
     });
@@ -66,5 +66,30 @@ export default Ember.Component.extend({
       this.get('$trix').off(eventName);
     });
   },
+
+  drop(event) {
+    let data = event.dataTransfer.getData('text/html');
+    let editor = event.target.editor;
+
+    // look in parents for the trix editor
+    if (!editor) {
+      editor = $(event.target).parents('trix-editor')[0]['editor'];
+    }
+
+    let src = '';
+    const findImage = (event, el) => {
+      if ( $(el).is('img') ) {
+        src = el.src;
+      }
+    };
+
+    $(data).each(findImage);
+
+    if (src && editor) {
+      let attributes = { url: src, contentType: 'image/png' };
+      let attachment = new Trix.Attachment(attributes);
+      editor.insertAttachment(attachment);
+    }
+  }
 
 });
