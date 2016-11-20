@@ -1,6 +1,6 @@
 {
   "name": "ember-trix",
-  "version": "0.9.9",
+  "version": "0.9.10",
   "description": "Ember addon for trix editor (WYSIWYG html editor) from basecamp.",
   "directories": {
     "doc": "doc",
