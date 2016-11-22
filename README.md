@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/eguitarz/ember-trix.svg?branch=master)](https://travis-ci.org/eguitarz/ember-trix)
+
 # ember-trix
 
 This ember addon wrapped trix editor from Basecamp. Trix is a WYSIWYG editor,
