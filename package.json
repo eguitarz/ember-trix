@@ -13,7 +13,7 @@
   },
   "repository": "https://github.com/eguitarz/ember-trix",
   "engines": {
-    "node": ">= 0.10.0"
+    "node": ">= 4"
   },
   "author": "Dale Ma",
   "license": "MIT",
