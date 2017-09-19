@@ -1,6 +1,6 @@
 import Ember from 'ember';
 import layout from '../templates/components/ember-trix';
-import _ from 'lodash/lodash';
+import _merge from 'lodash/merge';
 
 const { Trix } = window;
 
