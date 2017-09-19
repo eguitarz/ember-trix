@@ -1,3 +1,4 @@
+
 /* jshint node: true */
 'use strict';
 
@@ -9,15 +10,19 @@ module.exports = {
   included: function(app) {
     this._super.included(app);
 
-    app.import(
-      path.join(app.bowerDirectory, 'trix/dist/trix.js'),
-      { type: 'vendor' }
-    );
+    let env = this.project.config();
 
-    app.import(
-      path.join(app.bowerDirectory, 'trix/dist/trix.css'),
-      { type: 'vendor' }
-    );
+    if (env['ember-trix'] && env['ember-trix'].loadTrix) {
+      app.import(
+        path.join(app.bowerDirectory, 'trix/dist/trix.js'),
+        { type: 'vendor' }
+      );
+
+      app.import(
+        path.join(app.bowerDirectory, 'trix/dist/trix.css'),
+        { type: 'vendor' }
+      );
+    }
 
     // app.import(
     //   path.join(app.bowerDirectory, 'lodash/lodash.js'),
